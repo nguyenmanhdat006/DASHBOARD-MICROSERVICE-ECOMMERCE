@@ -22,32 +22,32 @@ public class WebClientConfig {
     @Value("${services.payment.url}")
     private String paymentServiceUrl;
 
-    @Bean(name = "orderServiceClient")
-    public WebClient orderServiceClient() {
+    @Bean(name = "orderWebClient")
+    public WebClient orderWebClient() {
         return WebClient.builder()
                 .baseUrl(orderServiceUrl)
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
     }
 
-    @Bean(name = "userServiceClient")
-    public WebClient userServiceClient() {
+    @Bean(name = "userWebClient")
+    public WebClient userWebClient() {
         return WebClient.builder()
                 .baseUrl(userServiceUrl)
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
     }
 
-    @Bean(name = "productServiceClient")
-    public WebClient productServiceClient() {
+    @Bean(name = "productWebClient")
+    public WebClient productWebClient() {
         return WebClient.builder()
                 .baseUrl(productServiceUrl)
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
     }
 
-    @Bean(name = "paymentServiceClient")
-    public WebClient paymentServiceClient() {
+    @Bean(name = "paymentWebClient")
+    public WebClient paymentWebClient() {
         return WebClient.builder()
                 .baseUrl(paymentServiceUrl)
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)

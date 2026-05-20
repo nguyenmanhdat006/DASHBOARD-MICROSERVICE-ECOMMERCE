@@ -1,6 +1,5 @@
 package com.ecommerce.dashboard.client;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -9,12 +8,14 @@ import org.springframework.web.reactive.function.client.WebClient;
 import java.math.BigDecimal;
 
 @Component
-@RequiredArgsConstructor
 @Slf4j
 public class ProductServiceClient {
 
-    @Qualifier("productServiceClient")
     private final WebClient productServiceClient;
+
+    public ProductServiceClient(@Qualifier("productWebClient") WebClient productServiceClient) {
+        this.productServiceClient = productServiceClient;
+    }
 
     public ProductDetails getProductDetails(String productId) {
         try {
