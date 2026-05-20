@@ -1,20 +1,19 @@
 package com.ecommerce.dashboard.client;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.List;
-
 @Component
-@RequiredArgsConstructor
 @Slf4j
 public class UserServiceClient {
 
-    @Qualifier("userServiceClient")
     private final WebClient userServiceClient;
+
+    public UserServiceClient(@Qualifier("userWebClient") WebClient userServiceClient) {
+        this.userServiceClient = userServiceClient;
+    }
 
     public Long countTotalUsers() {
         try {

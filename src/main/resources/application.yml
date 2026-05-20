@@ -5,9 +5,9 @@ spring:
   application:
     name: dashboard-service
   datasource:
-    url: jdbc:postgresql://localhost:5440/dashboard_db
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://localhost:5432/dashboard_db
+    username: nguyendat
+    password: nguyendat
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -21,6 +21,12 @@ spring:
     type: caffeine
     caffeine:
       spec: maximumSize=100,expireAfterWrite=300s
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://usw2.auth.ac/auth/realms/ecommerce
+          jwk-set-uri: https://usw2.auth.ac/auth/realms/ecommerce/protocol/openid-connect/certs
 
 services:
   order:
@@ -47,3 +53,12 @@ eureka:
 logging:
   level:
     com.ecommerce.dashboard: DEBUG
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: alpha
+    tagsSorter: alpha
+

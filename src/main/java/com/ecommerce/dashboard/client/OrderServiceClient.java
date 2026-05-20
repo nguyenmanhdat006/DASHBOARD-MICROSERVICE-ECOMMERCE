@@ -2,7 +2,6 @@ package com.ecommerce.dashboard.client;
 
 import com.ecommerce.dashboard.dto.response.SalesChartResponse;
 import com.ecommerce.dashboard.dto.response.TopProductsResponse;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -12,12 +11,14 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Component
-@RequiredArgsConstructor
 @Slf4j
 public class OrderServiceClient {
 
-    @Qualifier("orderServiceClient")
     private final WebClient orderServiceClient;
+
+    public OrderServiceClient(@Qualifier("orderWebClient") WebClient orderServiceClient) {
+        this.orderServiceClient = orderServiceClient;
+    }
 
     public Long countPendingOrders() {
         try {
